@@ -13,7 +13,6 @@ resource "google_compute_subnetwork" "subnet1" {
   network       = google_compute_network.vpc.name
   ip_cidr_range = "10.20.0.0/24"
   private_ip_google_access  = "true"
-  subnet_flow_logs = "true"
 }
 
 # Subnet 2
