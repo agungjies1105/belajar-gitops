@@ -1,4 +1,4 @@
- module "network"   {
+ module "vpc"   {
     source       = "./provider.tf"
     project_id   = var.project_id
     network_name = "my-sf-vpc"
