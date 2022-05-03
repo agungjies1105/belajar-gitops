@@ -4,6 +4,10 @@ terraform {
       source = "hashicorp/google"
       version = "4.20.0"
     }
+    vpc = {
+      source  = "terraform-google-modules/network/google"
+      version = "~> 4.0"
+    }
   }
 }
 
