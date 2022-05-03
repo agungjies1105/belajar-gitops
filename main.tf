@@ -11,6 +11,7 @@ provider "google" {
   region  = var.region
   zone    = var.zone
 }
+
 variable "project_id" {
   description = "project_id"
 }
