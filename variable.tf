@@ -9,9 +9,3 @@ variable "region" {
 variable "zone" {
   description = "zone"
 } 
-variable "network_name" {
-  description = "VPC Name"
-} 
-variable "subnets" {
-  description = "subnet"
-} 
