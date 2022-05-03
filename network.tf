@@ -6,11 +6,20 @@ resource "google_compute_network" "vpc" {
   routing_mode            = "REGIONAL"
 }
 
-# Subnet
+# Subnet 1
 resource "google_compute_subnetwork" "subnet" {
-  name          = "${var.project_id}-subnet"
+  name          = "${var.project_id}-subnet1"
   region        = var.region
   network       = google_compute_network.vpc.name
   ip_cidr_range = "10.20.0.0/24"
+  private_ip_google_access  = "true"
+}
+
+# Subnet 2
+resource "google_compute_subnetwork" "subnet" {
+  name          = "${var.project_id}-subnet2"
+  region        = var.region
+  network       = google_compute_network.vpc.name
+  ip_cidr_range = "10.20.1.0/24"
   private_ip_google_access  = "true"
 }
