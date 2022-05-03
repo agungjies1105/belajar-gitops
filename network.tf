@@ -1,4 +1,4 @@
-module "vpc" {
+module "vpc" "network" {
 
     project_id   = var.project_id
     network_name = "my-sf-vpc"
