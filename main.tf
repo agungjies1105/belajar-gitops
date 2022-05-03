@@ -12,3 +12,7 @@ provider "google" {
   region  = var.region
   zone    = var.zone
 }
+module "gcloud" {
+create_cmd_entrypoint  = "gcloud"
+create_cmd_body        = "version"
+}
