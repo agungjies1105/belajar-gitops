@@ -1,5 +1,7 @@
  module "vpc"   {
-    source       = "./provider.tf"
+    source  = "terraform-google-modules/network/google"
+    version = "~> 4.0"
+
     project_id   = var.project_id
     network_name = "my-sf-vpc"
     routing_mode = "REGIONAL"
