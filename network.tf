@@ -1,3 +1,4 @@
+ module "network"   {
     project_id   = var.project_id
     network_name = "my-sf-vpc"
     routing_mode = "REGIONAL"
@@ -26,3 +27,4 @@
             subnet_flow_logs_metadata = "INCLUDE_ALL_METADATA"
         }
     ]
+}
