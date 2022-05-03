@@ -1,25 +1,33 @@
+ module "vpc"   {
+    source  = "terraform-google-modules/network/google"
+    version = "~> 4.0"
 
-#VPC
-resource "google_compute_network" "vpc" {
-  name                    = "${var.project_id}-vpc"
-  auto_create_subnetworks = "false"
-  routing_mode            = "REGIONAL"
-}
+    project_id   = var.project_id
+    network_name = "my-sf-vpc"
+    routing_mode = "REGIONAL"
 
-# Subnet 1
-resource "google_compute_subnetwork" "subnet1" {
-  name          = "${var.project_id}-subnet1"
-  region        = var.region
-  network       = google_compute_network.vpc.name
-  ip_cidr_range = "10.20.0.0/24"
-  private_ip_google_access  = "true"
-}
-
-# Subnet 2
-resource "google_compute_subnetwork" "subnet2" {
-  name          = "${var.project_id}-subnet2"
-  region        = var.region
-  network       = google_compute_network.vpc.name
-  ip_cidr_range = "10.20.1.0/24"
-  private_ip_google_access  = "true"
+    subnets = [
+        {
+            subnet_name           = "subnet-01"
+            subnet_ip             = "10.10.10.0/24"
+            subnet_region         = "asia-southeast2"
+        },
+        {
+            subnet_name           = "subnet-02"
+            subnet_ip             = "10.10.20.0/24"
+            subnet_region         = "asia-southeast2"
+            subnet_private_access = "true"
+            subnet_flow_logs      = "true"
+            description           = "This subnet has a description"
+        },
+        {
+            subnet_name               = "${var.project_id}-subnet-03"
+            subnet_ip                 = "10.10.30.0/24"
+            subnet_region             = "asia-southeast2"
+            subnet_flow_logs          = "true"
+            subnet_flow_logs_interval = "INTERVAL_10_MIN"
+            subnet_flow_logs_sampling = 0.7
+            subnet_flow_logs_metadata = "INCLUDE_ALL_METADATA"
+        }
+    ]
 }
